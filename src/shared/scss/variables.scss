@@ -2,3 +2,20 @@
 
 $white: #ffffff;
 $black: #000000;
+$blue: #1976d2;
+
+@mixin shadow-text {
+  text-shadow: 1px 1px 2px #55e7fb, 0 0 1em #106fd4, 0 0 0.2em #1937d8;
+}
+
+$screen-max-width-biggest: 1440px;
+$screen-max-width-big: 1280px;
+$screen-max-width-medium: 1024px;
+$screen-max-width-small: 768px;
+$screen-max-width-smallest: 480px;
+
+$screen-min-width-biggest: 1441px;
+$screen-min-width-big: 1281px;
+$screen-min-width-medium: 1025px;
+$screen-min-width-small: 769px;
+$screen-min-width-smallest: 481px;

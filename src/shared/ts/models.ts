@@ -1,1 +1,4 @@
-export interface IInterface {}
+export interface IAdvantageCardProps {
+  title: string;
+  description: string;
+}

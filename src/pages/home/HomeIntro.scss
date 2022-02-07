@@ -1,0 +1,46 @@
+@import '../../shared/scss/variables.scss';
+
+.home__intro {
+  height: calc(100vh - 100px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6vw;
+  font-size: 22px;
+  gap: 5vw;
+}
+
+.home__intro_content {
+  max-width: 1920px;
+}
+
+.home__intro_title {
+  font-family: Montserrat;
+  font-size: 32px;
+  margin-bottom: 2vh;
+}
+
+.home__intro_description {
+  margin: 2vh 0;
+  max-width: 600px;
+}
+
+@media screen and (max-width: $screen-max-width-medium) {
+  .home__intro {
+    font-size: 16px;
+  }
+
+  .home__intro_title {
+    font-size: 28px;
+  }
+
+  .home__intro_img {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: $screen-max-width-small) {
+  .home__intro {
+    flex-direction: column;
+  }
+}

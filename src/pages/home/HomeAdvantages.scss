@@ -1,0 +1,39 @@
+@import '../../shared/scss/variables.scss';
+
+.home__advantages {
+  max-width: 1920px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.home__advantages_title {
+  font-family: Montserrat;
+  font-size: 32px;
+  margin-bottom: 4vh;
+  text-align: center;
+}
+
+.home__advantages_content {
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2vw;
+  max-width: 800px;
+}
+
+.home__advantages_content-icon {
+  width: 25px;
+  height: 25px;
+  color: $blue;
+}
+
+@media screen and (max-width: $screen-max-width-small) {
+  .home__advantages {
+    padding: 2vh 0;
+    height: 100%;
+  }
+}
