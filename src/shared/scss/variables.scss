@@ -4,10 +4,6 @@ $white: #ffffff;
 $black: #000000;
 $blue: #1976d2;
 
-@mixin shadow-text {
-  text-shadow: 1px 1px 2px #55e7fb, 0 0 1em #106fd4, 0 0 0.2em #1937d8;
-}
-
 $screen-max-width-biggest: 1440px;
 $screen-max-width-big: 1280px;
 $screen-max-width-medium: 1024px;

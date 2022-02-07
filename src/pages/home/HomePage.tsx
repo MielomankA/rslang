@@ -1,9 +1,8 @@
-import { Footer } from '../../components/footer/Footer';
 import { Header } from '../../components/header/Header';
+import { HomeIntro } from './HomeIntro';
 import { HomeAdvantages } from './HomeAdvantages';
 import { HomeDevelopers } from './HomeDevelopers';
-import { HomeIntro } from './HomeIntro';
-import './HomePage.scss';
+import { Footer } from '../../components/footer/Footer';
 
 export const HomePage = () => {
   return (

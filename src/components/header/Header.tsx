@@ -28,7 +28,7 @@ export const Header = () => {
             variant="outlined"
             sx={{
               bgcolor: '#fff',
-              color: '#1d18d9',
+              color: '#1976d2',
               boxShadow: 1,
               borderRadius: 3,
               p: 1,
@@ -38,10 +38,12 @@ export const Header = () => {
             <LoginIcon className="header__login_icon" />
             Вход
           </Button>
-          <AccountCircleIcon sx={{ fontSize: 40 }} />
-          <IconButton color="primary" aria-label="add an alarm">
-            <LogoutIcon className="header__logout_icon" />
-          </IconButton>
+          <div className="header__auth">
+            <AccountCircleIcon sx={{ fontSize: 40 }} />
+            <IconButton color="primary" aria-label="add an alarm">
+              <LogoutIcon className="header__logout_icon" />
+            </IconButton>
+          </div>
         </div>
       </div>
     </header>

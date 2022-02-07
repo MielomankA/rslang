@@ -1,6 +1,8 @@
-import './HomeIntro.scss';
-import homeIntro from '../../assets/svg/home-intro.svg';
 import { Button } from '@mui/material';
+
+import homeIntro from '../../assets/svg/home-intro.svg';
+
+import './HomeIntro.scss';
 
 export const HomeIntro = () => {
   return (
