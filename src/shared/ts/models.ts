@@ -10,3 +10,9 @@ export interface IDeveloperCardProps {
   jobStatus: string;
   description: string;
 }
+
+export interface IRequestUserData {
+  name: string;
+  email: string;
+  password: string;
+}

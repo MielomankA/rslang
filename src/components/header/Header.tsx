@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 import { Button, IconButton } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
 import LoginIcon from '@mui/icons-material/Login';
@@ -7,14 +9,20 @@ import './Header.scss';
 import { BurgerMenu } from './BurgerMenu';
 
 export const Header = () => {
+  const navigate = useNavigate();
+
   return (
     <header className="header">
       <div className="header__content">
-        <div className="header__logo">RS-Lang</div>
+        <div className="header__logo" onClick={() => navigate('/home', { replace: true })}>
+          RS-Lang
+        </div>
         <div className="header__nav_wrap">
           <nav className="header__nav">
             <ul className="header__nav_list">
-              <li className="header__nav_item">Главная</li>
+              <li className="header__nav_item" onClick={() => navigate('/home', { replace: true })}>
+                Главная
+              </li>
               <li className="header__nav_item">Учебник</li>
               <li className="header__nav_item">Игры</li>
               <li className="header__nav_item">Статистика</li>
@@ -34,6 +42,7 @@ export const Header = () => {
               p: 1,
               minWidth: 100,
             }}
+            onClick={() => navigate('/login', { replace: true })}
           >
             <LoginIcon className="header__login_icon" />
             Вход
