@@ -9,7 +9,7 @@ export const LoginPage = () => {
   const navigate = useNavigate();
   return (
     <>
-      <Header />
+      <Header username={''} />
       <section className="login-page">
         <div className="login-page__content">
           <h1 className="login-page__title">Войти</h1>

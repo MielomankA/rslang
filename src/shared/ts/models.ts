@@ -11,8 +11,18 @@ export interface IDeveloperCardProps {
   description: string;
 }
 
-export interface IRequestUserData {
+export interface IPostRequestUserData {
   name: string;
   email: string;
   password: string;
+}
+
+export interface IPostResponseAuth {
+  id: string;
+  name: string;
+  email: string;
+}
+
+export interface IHeaderProps {
+  username: string;
 }
