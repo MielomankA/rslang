@@ -23,10 +23,6 @@ export interface IPostResponseAuth {
   email: string;
 }
 
-export interface IHeaderProps {
-  username: string;
-}
-
 export interface ISigninData {
   email: string;
   password: string;
