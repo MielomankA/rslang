@@ -3,32 +3,22 @@ import { useNavigate } from 'react-router-dom';
 import { Button, IconButton } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
 import LoginIcon from '@mui/icons-material/Login';
-// import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 import './Header.scss';
 import { BurgerMenu } from './BurgerMenu';
-import { IHeaderProps } from '../../shared/ts/models';
-import { useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../../store/hooks/redux';
+import { addUsername } from '../../store/reducers/userSlice';
 
-export const Header: React.FC<IHeaderProps> = ({ username }) => {
+export const Header = () => {
   const navigate = useNavigate();
-  const [nickname, setNickname] = useState<string>(username);
+  const dispatch = useAppDispatch();
 
-  console.log(username);
+  const nickname = useAppSelector((state) => state.userReducer.user.name);
 
-  useEffect(() => {
-    const localStorageUsername = localStorage.getItem('username');
-
-    if (localStorageUsername) {
-      setNickname(localStorageUsername);
-    }
-
-    if (!localStorageUsername) {
-      setNickname('');
-    }
-  }, []);
-
-  // setUserName(value);
+  const handleClickLogout = () => {
+    localStorage.clear();
+    dispatch(addUsername(''));
+  };
 
   return (
     <header className="header">
@@ -71,7 +61,7 @@ export const Header: React.FC<IHeaderProps> = ({ username }) => {
           {nickname ? (
             <div className="header__auth">
               <p>{nickname ? nickname : null}</p>
-              <IconButton color="primary" aria-label="add an alarm" onClick={() => localStorage.clear()}>
+              <IconButton color="primary" aria-label="add an alarm" onClick={handleClickLogout}>
                 <LogoutIcon className="header__logout_icon" />
               </IconButton>
             </div>
