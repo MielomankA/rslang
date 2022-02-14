@@ -4,11 +4,13 @@ import { Button, TextField } from '@mui/material';
 import { IPostRequestUserData } from '../../shared/ts/models';
 import { useAppDispatch } from '../../store/hooks/redux';
 import { userAuth } from '../../shared/ts/helperFunctions';
+import { useNavigate } from 'react-router-dom';
 
 export const AuthPageForm = () => {
   const [inputName, setInputName] = useState<string>('');
   const [inputEmail, setInputEmail] = useState<string>('');
   const [inputPassword, setInputPassword] = useState<string>('');
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const authData: IPostRequestUserData = {
@@ -27,6 +29,7 @@ export const AuthPageForm = () => {
     }
 
     userAuth({ endpointUrl: 'users', data: authData }, dispatch);
+    navigate('/home', { replace: true });
   };
 
   return (

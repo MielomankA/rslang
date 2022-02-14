@@ -29,6 +29,8 @@ export const LoginPage = () => {
       },
       dispatch
     );
+
+    navigate('/home', { replace: true });
   };
 
   return (
