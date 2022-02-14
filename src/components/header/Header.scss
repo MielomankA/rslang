@@ -1,4 +1,4 @@
-@import '../../shared//scss/variables.scss';
+@import '../../shared/scss/variables.scss';
 
 .header {
   padding: 3vh 6vw;
@@ -91,7 +91,6 @@
 .header__auth {
   display: flex;
   align-items: center;
-  display: none;
 }
 
 .header__logout_icon {
