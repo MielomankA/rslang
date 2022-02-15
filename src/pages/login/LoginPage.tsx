@@ -27,7 +27,8 @@ export const LoginPage = () => {
         endpointUrl: 'signin',
         data: signinData,
       },
-      dispatch
+      dispatch,
+      navigate
     );
 
     navigate('/home', { replace: true });

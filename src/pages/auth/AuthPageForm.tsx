@@ -10,8 +10,8 @@ export const AuthPageForm = () => {
   const [inputName, setInputName] = useState<string>('');
   const [inputEmail, setInputEmail] = useState<string>('');
   const [inputPassword, setInputPassword] = useState<string>('');
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const authData: IPostRequestUserData = {
     name: inputName,
@@ -28,8 +28,7 @@ export const AuthPageForm = () => {
       alert('Поле не должно быть пустым');
     }
 
-    userAuth({ endpointUrl: 'users', data: authData }, dispatch);
-    navigate('/home', { replace: true });
+    userAuth({ endpointUrl: 'users', data: authData }, dispatch, navigate);
   };
 
   return (
