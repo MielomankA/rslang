@@ -1,4 +1,5 @@
 import { MouseEventHandler, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -8,6 +9,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import './BurgerMenu.scss';
 
 export const BurgerMenu = () => {
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const open = Boolean(anchorEl);
   const handleClick: MouseEventHandler<HTMLButtonElement> = (event) => {
@@ -39,8 +41,22 @@ export const BurgerMenu = () => {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={handleClose}>Главная</MenuItem>
-        <MenuItem onClick={handleClose}>Учебник</MenuItem>
+        <MenuItem
+          onClick={() => {
+            navigate('/home', { replace: true });
+            handleClose();
+          }}
+        >
+          Главная
+        </MenuItem>
+        <MenuItem
+          onClick={() => {
+            navigate('/textbook', { replace: true });
+            handleClose();
+          }}
+        >
+          Учебник
+        </MenuItem>
         <MenuItem onClick={handleClose}>Игры</MenuItem>
         <MenuItem onClick={handleClose}>Статистика</MenuItem>
       </Menu>

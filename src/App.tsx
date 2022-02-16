@@ -7,6 +7,7 @@ import { HomePage } from './pages/home/HomePage';
 import { AuthPage } from './pages/auth/AuthPage';
 import { useAppDispatch } from './store/hooks/redux';
 import { addUsername } from './store/reducers/userSlice';
+import { Textbook } from './pages/textbook/Textbook';
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -26,6 +27,7 @@ const App = () => {
         <Route path="/home" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/auth" element={<AuthPage />} />
+        <Route path="/textbook" element={<Textbook />} />
       </Routes>
     </BrowserRouter>
   );

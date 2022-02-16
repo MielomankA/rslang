@@ -32,7 +32,9 @@ export const Header = () => {
               <li className="header__nav_item" onClick={() => navigate('/home', { replace: true })}>
                 Главная
               </li>
-              <li className="header__nav_item">Учебник</li>
+              <li className="header__nav_item" onClick={() => navigate('/textbook', { replace: true })}>
+                Учебник
+              </li>
               <li className="header__nav_item">Игры</li>
               <li className="header__nav_item">Статистика</li>
             </ul>

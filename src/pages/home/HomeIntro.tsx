@@ -1,10 +1,13 @@
 import { Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 import homeIntro from '../../assets/svg/home-intro.svg';
 
 import './HomeIntro.scss';
 
 export const HomeIntro = () => {
+  const navigate = useNavigate();
+
   return (
     <section className="home__intro">
       <div className="home__intro_content">
@@ -14,7 +17,9 @@ export const HomeIntro = () => {
           Запоминание английских слов может очень быть увлекательным! Играйте в игры, слушайте произношение, улучшайте
           свои знание. С нашим приложением обучение в радость!
         </p>
-        <Button variant="contained">Начать изучение!</Button>
+        <Button variant="contained" onClick={() => navigate('/textbook', { replace: true })}>
+          Начать изучение!
+        </Button>
       </div>
       <img src={homeIntro} alt="" className="home__intro_img" />
     </section>
