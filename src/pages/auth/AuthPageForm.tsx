@@ -34,14 +34,6 @@ export const AuthPageForm = () => {
     }
 
     userAuth({ endpointUrl: 'users', data: authData }, dispatch, navigate);
-    // userAuth(
-    //   {
-    //     endpointUrl: 'signin',
-    //     data: signinData,
-    //   },
-    //   dispatch,
-    //   navigate
-    // );
   };
 
   return (
