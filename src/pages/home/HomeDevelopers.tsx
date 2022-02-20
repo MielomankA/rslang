@@ -1,5 +1,7 @@
-import './HomeDevelopers.scss';
 import logoMielo from '../../assets/image/logo-mielo.png';
+import photoHotlovestl from '../../assets/image/photo-hotlovestl.jpg';
+
+import './HomeDevelopers.scss';
 import { DeveloperCard } from './DeveloperCard';
 
 export const HomeDevelopers = () => {
@@ -11,15 +13,15 @@ export const HomeDevelopers = () => {
           avatarUrl={logoMielo}
           name="Mielomanka"
           githubUrl="https://github.com/MielomankA"
-          jobStatus="Frontend-developer"
-          description="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."
+          jobStatus="Team leader, Frontend-developer"
+          description="Главная страница, авторизация, учебник"
         />
         <DeveloperCard
-          avatarUrl={logoMielo}
-          name="Mielomanka"
-          githubUrl="https://github.com/MielomankA"
+          avatarUrl={photoHotlovestl}
+          name="Hotlovestl"
+          githubUrl="https://github.com/hotlovestl"
           jobStatus="Frontend-developer"
-          description="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."
+          description="Аудиовызов, статья, подготовка презентации"
         />
       </div>
     </section>
