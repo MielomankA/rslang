@@ -1,0 +1,26 @@
+@import '../../shared/scss/variables.scss';
+
+.textbook-page__group_title {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.textbook-page__group_buttons {
+  display: flex;
+  gap: 10px;
+}
+
+@media screen and (max-width: $screen-max-width-small) {
+  .textbook-page__group_buttons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    max-width: 450px;
+  }
+  .textbook-page__group_buttons > button {
+    min-width: 35px;
+    padding: 2px 4px;
+  }
+}
