@@ -18,6 +18,11 @@ export const userAuth = (requestConfig: RequestConfig, dispatch: Dispatch, navig
       localStorage.setItem('username', response.data.name);
       dispatch(addUsername(response.data.name));
 
+      // if (response.data.token) {
+      //   localStorage.setItem('authToken', response.data.token);
+      //   localStorage.setItem('refreshToken', response.data.refreshToken);
+      // }
+
       if (response.data.name) {
         navigate('/home', { replace: true });
       }

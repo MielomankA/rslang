@@ -19,6 +19,11 @@ export const AuthPageForm = () => {
     password: inputPassword,
   };
 
+  // const signinData = {
+  //   email: inputEmail,
+  //   password: inputPassword,
+  // };
+
   const handleSubmit = () => {
     if (inputName.length < 3) {
       alert('Имя должно содержать 3 и более символа');
@@ -29,6 +34,14 @@ export const AuthPageForm = () => {
     }
 
     userAuth({ endpointUrl: 'users', data: authData }, dispatch, navigate);
+    // userAuth(
+    //   {
+    //     endpointUrl: 'signin',
+    //     data: signinData,
+    //   },
+    //   dispatch,
+    //   navigate
+    // );
   };
 
   return (

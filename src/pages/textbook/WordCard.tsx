@@ -38,29 +38,35 @@ export const WordCard: React.FC<IWordCardProps> = ({
     const audioWord = new Audio(audioWordUrl);
     const audioExampleWord = new Audio(audioExampleWordUrl);
     const audioMeaningWord = new Audio(audioMeaningWordUrl);
-    const onPlay = () => {
-      audioWord.play();
-      audioWord.onended = () => {
-        audioExampleWord.play();
-      };
-      audioExampleWord.onended = () => {
-        audioMeaningWord.play();
-      };
+
+    const onPlay = (audio: HTMLAudioElement) => {
+      audio.play();
     };
 
     if (play) {
-      audioWord.addEventListener('canplaythrough', onPlay);
-    } else {
+      audioWord.addEventListener('canplaythrough', () => onPlay(audioWord));
+      audioWord.addEventListener('ended', () => onPlay(audioExampleWord));
+      audioExampleWord.addEventListener('ended', () => onPlay(audioMeaningWord));
+    }
+
+    if (!play) {
       audioWord.pause();
       audioExampleWord.pause();
       audioMeaningWord.pause();
-      setPlay(false);
     }
 
     return () => {
       if (audioWord) {
         audioWord.pause();
-        audioWord.removeEventListener('canplaythrough', onPlay);
+        audioWord.removeEventListener('canplaythrough', () => onPlay(audioWord));
+      }
+      if (audioExampleWord) {
+        audioExampleWord.pause();
+        audioExampleWord.removeEventListener('canplaythrough', () => onPlay(audioExampleWord));
+      }
+      if (audioMeaningWord) {
+        audioMeaningWord.pause();
+        audioMeaningWord.removeEventListener('canplaythrough', () => onPlay(audioMeaningWord));
       }
     };
   }, [play, audioWordUrl, audioExampleWordUrl, audioMeaningWordUrl]);
@@ -87,7 +93,8 @@ export const WordCard: React.FC<IWordCardProps> = ({
       <div className="textbook-page__words_content">
         <div className="textbook-page__words_icons">
           <div className="textbook-page__words_icons-volume">
-            {!play ? <VolumeUpIcon onClick={onStart} /> : <StopIcon onClick={onStop} />}
+            {!play && <VolumeUpIcon onClick={onStart} />}
+            {play && <StopIcon onClick={onStop} />}
           </div>
           <div className="textbook-page__words_icons-bookmark">
             {!complexWords ? (
