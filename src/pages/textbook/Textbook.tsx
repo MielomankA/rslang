@@ -14,11 +14,13 @@ import './Textbook.scss';
 import { GameCard } from './GameCard';
 import { TextbookGroupsButtons } from './TextbookGroupsButtons';
 import { WordCard } from './WordCard';
+import { useNavigate } from 'react-router-dom';
 
 export const Textbook = () => {
   const [wordsData, setWordsData] = useState<Array<IWord>>([]);
   const [group, setGroup] = useState<number>(0);
   const [page, setPage] = useState<number>(0);
+  const navigate = useNavigate();
 
   const urlWords = `${process.env.REACT_APP_BASE_URL}words?group=${group}&page=${page}`;
 
@@ -38,12 +40,16 @@ export const Textbook = () => {
       <Header />
       <section className="textbook-page">
         <div className="textbook-page__games">
-          <GameCard text="Аудиовызов">
-            <HearingIcon />
-          </GameCard>
-          <GameCard text="Спринт">
-            <DirectionsRunIcon />
-          </GameCard>
+          <div onClick={() => navigate('/games/audiocall', { replace: true })}>
+            <GameCard text="Аудиовызов">
+              <HearingIcon />
+            </GameCard>
+          </div>
+          <div onClick={() => navigate('/games/sprint', { replace: true })}>
+            <GameCard text="Спринт">
+              <DirectionsRunIcon />
+            </GameCard>
+          </div>
         </div>
         <TextbookGroupsButtons setGroup={setGroup} />
         <Pagination

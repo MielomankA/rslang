@@ -8,7 +8,9 @@ import { AuthPage } from './pages/auth/AuthPage';
 import { useAppDispatch } from './store/hooks/redux';
 import { addUsername } from './store/reducers/userSlice';
 import { Textbook } from './pages/textbook/Textbook';
-
+import { GamesPage } from './pages/games/GamesPage';
+import { AudioCallPage } from './pages/games/audiocall/AudioCallPage';
+import { SprintPage } from './pages/games/sprint/SprintPage';
 const App = () => {
   const dispatch = useAppDispatch();
 
@@ -28,6 +30,9 @@ const App = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/auth" element={<AuthPage />} />
         <Route path="/textbook" element={<Textbook />} />
+        <Route path="/games" element={<GamesPage />} />
+        <Route path="/games/audiocall" element={<AudioCallPage />} />
+        <Route path="/games/sprint" element={<SprintPage />} />
       </Routes>
     </BrowserRouter>
   );
