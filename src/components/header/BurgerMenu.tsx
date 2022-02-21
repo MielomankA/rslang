@@ -57,9 +57,14 @@ export const BurgerMenu = () => {
         >
           Учебник
         </MenuItem>
-        <MenuItem onClick={() => { 
-          navigate('/games', { replace: true }) 
-          handleClose()}}> Игры </MenuItem>
+        <MenuItem
+          onClick={() => {
+            navigate('/games', { replace: true });
+            handleClose();
+          }}
+        >
+          Игры
+        </MenuItem>
         <MenuItem onClick={handleClose}>Статистика</MenuItem>
       </Menu>
     </div>

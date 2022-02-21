@@ -4,7 +4,9 @@ import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import StopIcon from '@mui/icons-material/Stop';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import BookmarkIcon from '@mui/icons-material/Bookmark';
-import { blue } from '@mui/material/colors';
+import CheckIcon from '@mui/icons-material/Check';
+import CloseIcon from '@mui/icons-material/Close';
+import { blue, green, red } from '@mui/material/colors';
 
 import { IWordCardProps } from '../../shared/ts/models';
 
@@ -27,12 +29,16 @@ export const WordCard: React.FC<IWordCardProps> = ({
   },
 }) => {
   const colorBlue = blue[500];
+  const colorRed = red[500];
+  const colorGreen = green[500];
   const [play, setPlay] = useState<boolean>(false);
   const [complexWords, setComplexWords] = useState<boolean>(false);
+  const [learnedWord, setLearnedWord] = useState<boolean>(false);
 
   const audioWordUrl = `${process.env.REACT_APP_BASE_URL}${audio}`;
   const audioExampleWordUrl = `${process.env.REACT_APP_BASE_URL}${audioExample}`;
   const audioMeaningWordUrl = `${process.env.REACT_APP_BASE_URL}${audioMeaning}`;
+  const username = localStorage.getItem('username');
 
   useEffect(() => {
     const audioWord = new Audio(audioWordUrl);
@@ -87,6 +93,14 @@ export const WordCard: React.FC<IWordCardProps> = ({
     setComplexWords(false);
   };
 
+  const isLearned = () => {
+    setLearnedWord(true);
+  };
+
+  const notLearned = () => {
+    setLearnedWord(false);
+  };
+
   return (
     <div className="textbook-page__words_card" id={id}>
       <img src={`${process.env.REACT_APP_BASE_URL}${image}`} alt={word} className="textbook-page__words_img" />
@@ -96,18 +110,40 @@ export const WordCard: React.FC<IWordCardProps> = ({
             {!play && <VolumeUpIcon onClick={onStart} />}
             {play && <StopIcon onClick={onStop} />}
           </div>
-          <div className="textbook-page__words_icons-bookmark">
-            {!complexWords ? (
-              <BookmarkBorderIcon onClick={onAddComplexWord} />
-            ) : (
-              <BookmarkIcon
-                onClick={onAddNotComplexWord}
-                sx={{
-                  color: colorBlue,
-                }}
-              />
-            )}
-          </div>
+          {username && (
+            <div className="textbook-page__words_icons-wrap">
+              <div className="textbook-page__words_icons-access">
+                {learnedWord && (
+                  <CheckIcon
+                    onClick={notLearned}
+                    sx={{
+                      color: colorGreen,
+                    }}
+                  />
+                )}
+                {!learnedWord && (
+                  <CloseIcon
+                    onClick={isLearned}
+                    sx={{
+                      color: colorRed,
+                    }}
+                  />
+                )}
+              </div>
+              <div className="textbook-page__words_icons-bookmark">
+                {!complexWords ? (
+                  <BookmarkBorderIcon onClick={onAddComplexWord} />
+                ) : (
+                  <BookmarkIcon
+                    onClick={onAddNotComplexWord}
+                    sx={{
+                      color: colorBlue,
+                    }}
+                  />
+                )}
+              </div>
+            </div>
+          )}
         </div>
         <div className="textbook-page__word">
           <div className="textbook-page__word_content">
