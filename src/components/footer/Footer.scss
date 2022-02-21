@@ -1,0 +1,99 @@
+@import '../../shared/scss/variables.scss';
+
+.footer {
+  width: 100%;
+  background-color: $blue;
+  padding: 3vh 6vw;
+  font-family: Montserrat;
+}
+
+.footer-content {
+  max-width: 1920px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.footer-logo {
+  transition: all 0.3s;
+}
+
+.footer-logo:hover {
+  transform: translateY(-3px);
+}
+
+.logo-link {
+  position: relative;
+}
+
+.year {
+  position: absolute;
+  padding-top: 16px;
+  font-size: 20px;
+}
+
+.logo-pic {
+  width: 100px;
+  fill: $white;
+}
+
+.team {
+  width: 100%;
+}
+
+.footer-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.footer-item {
+  list-style-type: none;
+  transition: all 0.3s;
+}
+
+.footer-item:hover {
+  transform: translateY(-5px);
+}
+
+a {
+  color: $white;
+}
+
+.list-link {
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.github-pic {
+  fill: $white;
+}
+
+@media screen and (max-width: $screen-max-width-small) {
+  .footer {
+    padding: 1vh 6vw;
+  }
+
+  .footer-list {
+    flex-direction: column;
+    gap: 1vh 0;
+  }
+
+  .list-link {
+    font-size: 16px;
+  }
+
+  .logo-pic {
+    width: 80px;
+  }
+
+  .year {
+    padding-top: 12px;
+    font-size: 18px;
+  }
+}

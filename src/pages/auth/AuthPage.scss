@@ -1,0 +1,35 @@
+@import '../../shared/scss/variables.scss';
+
+.auth-page {
+  max-width: 1920px;
+  height: calc(100vh - 199px);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-page__content {
+  display: flex;
+  flex-direction: column;
+  gap: 4vh 0;
+  max-width: 800px;
+  padding: 40px 80px;
+  box-shadow: rgb(0 0 0 / 15%) 0px 0px 10px;
+}
+
+.auth-page__title {
+  text-align: center;
+}
+
+.auth-page__auth_link-btn {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid $blue;
+  font-size: 16px;
+}
+
+.auth-page__auth_link-btn:hover {
+  cursor: pointer;
+  color: $blue;
+}

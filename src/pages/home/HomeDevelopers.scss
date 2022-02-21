@@ -1,0 +1,33 @@
+@import '../../shared/scss/variables.scss';
+
+.home__developers {
+  height: calc(100vh - 100px);
+  margin: 0 auto;
+  max-width: 1920px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2vw;
+}
+
+.home__developers_title {
+  font-family: Montserrat;
+  font-size: 32px;
+  margin-bottom: 4vh;
+  text-align: center;
+}
+
+.home__developers_content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0 3vw;
+}
+
+@media screen and (max-width: $screen-max-width-medium) {
+  .home__developers_content {
+    flex-direction: column;
+    gap: 3vh 0;
+  }
+}

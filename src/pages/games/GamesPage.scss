@@ -1,0 +1,23 @@
+@import '../../shared/scss/variables.scss';
+
+.games-page {
+  max-width: 1920px;
+  height: calc(100vh - 199px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5vh;
+}
+
+.games-page__card:hover {
+  cursor: pointer;
+  box-shadow: rgba(34, 111, 212, 0.479) 0px 0px 10px;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: $screen-max-width-small) {
+  .games-page {
+    flex-direction: column;
+    gap: 5vh;
+  }
+}
