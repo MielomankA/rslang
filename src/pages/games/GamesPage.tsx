@@ -7,6 +7,7 @@ import { Header } from '../../components/header/Header';
 import { AdvantageCard } from '../home/AdvantageCard';
 import './GamesPage.scss';
 import { useNavigate } from 'react-router-dom';
+import { AudioCallPage } from './audiocall/AudioCallPage';
 
 export const GamesPage = () => {
   const colorBlue = blue[600];

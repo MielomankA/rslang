@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Dispatch } from '@reduxjs/toolkit';
 
 import { addUsername } from '../../store/reducers/userSlice';
-import { RequestConfig } from './models';
+import { IWord, RequestConfig } from './models';
 import { NavigateFunction } from 'react-router-dom';
 
 export const userAuth = (requestConfig: RequestConfig, dispatch: Dispatch, navigate: NavigateFunction) => {
@@ -26,4 +26,23 @@ export const userAuth = (requestConfig: RequestConfig, dispatch: Dispatch, navig
       alert(error.response.data);
       console.log(error.response);
     });
+};
+
+export const getWords = async (
+  setWordsData: (WordsData: Array<IWord>) => void,
+  group: number = 0,
+  page: number = 0
+) => {
+  const response = await axios.request({
+    url: `${process.env.REACT_APP_BASE_URL}words`,
+    method: 'GET',
+    params: {
+      group,
+      page,
+    },
+  });
+
+  const wordsData: Array<IWord> = response.data;
+
+  setWordsData(wordsData);
 };

@@ -22,18 +22,22 @@ export const Textbook = () => {
   const [page, setPage] = useState<number>(0);
   const navigate = useNavigate();
 
-  const urlWords = `${process.env.REACT_APP_BASE_URL}words?group=${group}&page=${page}`;
+  const urlWords = `${process.env.REACT_APP_BASE_URL}words`;
 
   useEffect(() => {
     axios
       .request({
         url: urlWords,
         method: 'GET',
+        params: {
+          group,
+          page,
+        },
       })
       .then((response) => {
         setWordsData(response.data);
       });
-  }, [urlWords]);
+  }, [group, page, urlWords]);
 
   return (
     <>

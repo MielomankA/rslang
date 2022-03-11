@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Button } from '@mui/material';
@@ -6,9 +7,16 @@ import { deepPurple, indigo, blue, lightBlue, cyan, teal, green } from '@mui/mat
 
 import { Footer } from '../../../components/footer/Footer';
 import { Header } from '../../../components/header/Header';
+import { getWords } from '../../../shared/ts/helperFunctions';
+import { IAnswer } from '../../../shared/ts/models';
 
 import './AudioCallPage.scss';
-import { useState } from 'react';
+import { getAnswersArray } from './AudioCallGame';
+
+// export interface IAnswer {
+//   word: string;
+//   isCorrect: boolean;
+// }
 
 export const AudioCallPage = () => {
   const colorDeepPurple = deepPurple[300];
@@ -21,15 +29,50 @@ export const AudioCallPage = () => {
   const navigate = useNavigate();
 
   const [game, setGame] = useState<boolean>(false);
+  const [arrayAnswers, setArrayAnswers] = useState<Array<IAnswer>>([]);
+  const [audio, setAudio] = useState<HTMLAudioElement>();
 
   const onGame = () => {
     setGame(true);
   };
 
+  useEffect(() => {
+    getWords((arrayWords) => {
+      const answers = getAnswersArray(arrayWords, 5);
+      const correctAudio = answers.find((value) => value.isCorrect);
+      const audioWordUrl = `${process.env.REACT_APP_BASE_URL}${correctAudio?.audio}`;
+      const audioWord = new Audio(audioWordUrl);
+
+      setArrayAnswers(answers);
+      setAudio(audioWord);
+
+      audioWord.oncanplaythrough = () => {
+        audioWord.play();
+      };
+      audioWord.load();
+
+      return () => {
+        if (audioWord) {
+          audioWord.pause();
+          audioWord.oncanplaythrough = null;
+        }
+      };
+    });
+  }, []);
+
+  const onStart = () => {
+    if (!audio) {
+      return;
+    }
+
+    audio.currentTime = 0;
+    audio.play();
+  };
+
   return (
     <>
       <Header />
-      {!game && (
+      {/* {!game && (
         <div className="audiocall-page">
           <div className="audiocall-page__block_one">
             <h1 className="audiocall-page__title">Аудиовызов</h1>
@@ -112,79 +155,45 @@ export const AudioCallPage = () => {
             </div>
           </div>
         </div>
-      )}
-      {game && (
-        <div className="audiocall">
-          <div className="audiocall__wrapper">
-            <Button
-              variant="contained"
-              sx={{
-                bgcolor: colorCyan,
-                minWidth: 100,
-                padding: 0,
-                borderRadius: '50%',
-                width: 100,
-                height: 100,
-              }}
-            >
-              <VolumeUpIcon sx={{ fontSize: 50 }} />
-            </Button>
-            <div className="audiocall__words">
-              <Button
-                variant="contained"
-                sx={{
-                  bgcolor: 'transparent',
-                  color: 'black',
-                  minWidth: 100,
-                }}
-              >
-                1
-              </Button>
-              <Button
-                variant="contained"
-                sx={{
-                  bgcolor: 'transparent',
-                  color: 'black',
-                  minWidth: 100,
-                }}
-              >
-                2
-              </Button>
-              <Button
-                variant="contained"
-                sx={{
-                  bgcolor: 'transparent',
-                  color: 'black',
-                  minWidth: 100,
-                }}
-              >
-                3
-              </Button>
-              <Button
-                variant="contained"
-                sx={{
-                  bgcolor: 'transparent',
-                  color: 'black',
-                  minWidth: 100,
-                }}
-              >
-                4
-              </Button>
-              <Button
-                variant="contained"
-                sx={{
-                  bgcolor: 'transparent',
-                  color: 'black',
-                  minWidth: 100,
-                }}
-              >
-                5
-              </Button>
-            </div>
-            <Button variant="contained">Не знаю</Button>
+      )} */}
+      {/* {game && ( */}
+      <div className="audiocall">
+        <div className="audiocall__wrapper">
+          <Button
+            variant="contained"
+            sx={{
+              bgcolor: colorCyan,
+              minWidth: 100,
+              padding: 0,
+              borderRadius: '50%',
+              width: 100,
+              height: 100,
+            }}
+            onClick={onStart}
+          >
+            <VolumeUpIcon sx={{ fontSize: 50 }} />
+          </Button>
+          <div className="audiocall__words">
+            {arrayAnswers.map((answer, index) => {
+              return (
+                <Button
+                  key={`answer-${index}`}
+                  variant="contained"
+                  sx={{
+                    bgcolor: 'transparent',
+                    color: 'black',
+                    minWidth: 100,
+                  }}
+                >
+                  {`${index + 1} ${answer.word}`}
+                </Button>
+              );
+            })}
           </div>
+          <Button variant="contained">Не знаю</Button>
         </div>
-      )}
+      </div>
+      {/* )} */}
       <Footer />
     </>
   );

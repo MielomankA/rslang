@@ -52,7 +52,10 @@ export const WordCard: React.FC<IWordCardProps> = ({
     if (play) {
       audioWord.addEventListener('canplaythrough', () => onPlay(audioWord));
       audioWord.addEventListener('ended', () => onPlay(audioExampleWord));
-      audioExampleWord.addEventListener('ended', () => onPlay(audioMeaningWord));
+      audioExampleWord.addEventListener('ended', () => {
+        onPlay(audioMeaningWord);
+        setPlay(false);
+      });
     }
 
     if (!play) {

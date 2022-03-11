@@ -56,6 +56,10 @@ export interface IWord {
   textExampleTranslate: string;
 }
 
+export interface IAnswer extends IWord {
+  isCorrect: boolean;
+}
+
 export interface IWordCardProps {
   wordInfo: Omit<IWord, 'group' | 'page'>;
 }
